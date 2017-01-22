@@ -14,6 +14,7 @@ func _ready():
 	# Set the initial position
 	var pos = kite.get_translation()
 	pos.x = wave.get_translation().x
+	pos.y = wave.get_height(pos.z)
 	kite.set_translation(pos)
 	set_process(true)
 	
@@ -34,7 +35,18 @@ func _process(delta):
 			wave = node
 	
 	if(wave != null):
-		kite_pos.y = wave.get_height(kite_pos.z)
+		var height = wave.get_height(kite_pos.z)
+		
+		# Determine if we should lift the kite
+		if(kite_pos.y < height):
+			var diff = height - kite_pos.y
+			if (diff < wave.lift_radius):
+				kite_pos.y += delta * wave.lift_speed
+			else:
+				# Death!
+				pass
+		else:
+			kite_pos.y = height
 	else:
 		kite_pos.y -= delta * drop_speed
 

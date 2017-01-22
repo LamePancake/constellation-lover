@@ -9,6 +9,8 @@ var total_length = 0.0
 
 export var wave_vel = 6.0
 export var wave_start = 0.0
+export var lift_radius = 0.5
+export var lift_speed = 3.0
 
 func get_height(z_pos):
 	# Maps this wave in the range 0->PI/2
