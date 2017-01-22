@@ -9,7 +9,6 @@ func _ready():
 	set_process(true)
 	
 func _process(delta):
-	var first_segment = wave.wave_segment_array[0]
 	var pos = kite.get_translation()
-	pos.y = first_segment.back_height
+	pos.y = wave.get_height(pos.z)
 	kite.set_translation(pos)

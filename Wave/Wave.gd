@@ -11,21 +11,22 @@ export var wave_vel = 7.0
 export var wave_start = 0.0
 
 func get_height(z_pos):
+	# Maps this wave in the range 0->PI/2
 	var mapped_segment_size = PI * 2 / total_length
+	
+	# Calculate where this z position falls along the mapped line
 	var start = wave_segment_array[0].position.z + wave_segment_array[0].length
-	var offset = start
+	var pos = start - z_pos + wave_start
+	return sin(pos * mapped_segment_size) / 2.0
 	
+func set_segment_heights(segment):
+	# Get the front and back z-coordinates for this segment
+	# Front is in the -z direction
+	var back_z = segment.position.z + (segment.length / 2)
+	var front_z = segment.position.z - (segment.length / 2)
 	
-func get_segment_heights(segment, segment_num):
-	# Get the front and back heights for this segment
-	
-	var back_z = segment_num
-	var front_z = ((segment_num + 1) * mapped_size) + wave_start
-	
-	var back_height = sin(back) / 2
-	var front_height = sin(front) / 2
-	
-	return [front_height, back_height]
+	segment.back_height = get_height(back_z)
+	segment.front_height = get_height(front_z)
 	
 func _ready():
 	set_process(true)
@@ -44,11 +45,9 @@ func _ready():
 		add_child(seg)
 
 func _process(delta):
+	# Adjust the segments' heights
 	for i in range(number_of_wave_segments):
-		var seg = wave_segment_array[i]
-		var seg_heights = get_segment_heights(seg, i)
-		seg.front_height = seg_heights[0]
-		seg.back_height = seg_heights[1]
+		set_segment_heights(wave_segment_array[i])
 	
 	wave_start += delta * wave_vel
 	
