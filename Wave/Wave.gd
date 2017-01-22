@@ -2,7 +2,7 @@ extends Node
 
 const WaveSegmentScene = preload("res://Wave/WaveSegment.tscn")
 
-var number_of_wave_segments = 6
+export var number_of_wave_segments = 20
 var wave_segment_array = Array()
 var height = 0
 var total_length = 0.0
@@ -22,6 +22,7 @@ export var wave_start = 0.0
 
 export var lift_radius = 0.5
 export var lift_speed = 3.0
+export(Material) var wave_material = null
 
 func get_height(z_pos):
 	# Maps this wave in the range 0->PI/2
@@ -102,6 +103,7 @@ func _ready():
 		# Currently this is hardcoded in the WaveSegment script
 		position.z -= seg.length
 		seg.position = position
+		seg.material = wave_material
 		
 		total_length += seg.length
 		

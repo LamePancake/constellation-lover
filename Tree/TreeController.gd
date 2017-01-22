@@ -14,8 +14,23 @@ var right_tree_array = Array()
 var left_tree_array = Array()
 
 func _ready():
+	spawn_time = spawn_interval
 	right_spawn_position = get_node("TreeSpawnRight").get_global_transform().origin
 	left_spawn_position = get_node("TreeSpawnLeft").get_global_transform().origin
+	var number_of_original_trees = 6
+	var left_position = left_spawn_position
+	var right_position = right_spawn_position
+	for i in range(number_of_original_trees):
+		var left_tree = tree_scene.instance()
+		left_tree.set_transform(Transform(left_tree.get_global_transform().basis, left_position))
+		add_child(left_tree)
+		left_tree_array.push_back(left_tree)
+		var right_tree = tree_scene.instance()
+		right_tree.set_transform(Transform(right_tree.get_global_transform().basis, right_position))
+		add_child(right_tree)
+		right_tree_array.push_back(right_tree)
+		left_position += movement * spawn_interval
+		right_position += movement * spawn_interval
 	set_process(true)
 
 func _process(delta):
