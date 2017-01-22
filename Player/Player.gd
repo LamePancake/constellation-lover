@@ -54,8 +54,8 @@ func _process_input():
 	else:
 		is_moving_right = false
 
-	if (Input.is_action_pressed("JUMP") && !is_ascending && !is_descending):
-		is_ascending = true
+	#if (Input.is_action_pressed("JUMP") && !is_ascending && !is_descending):
+		#is_ascending = true
 
 func _update_horizontal_movement(delta, cur_pos, cur_rot):
 	
