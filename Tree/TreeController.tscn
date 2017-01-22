@@ -11,11 +11,11 @@ spawn_interval = 3
 [node name="TreeSpawnRight" type="Spatial" parent="."]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.4839, -11.9939, -17.1855 )
+transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.4839, -11.9939, -35.1646 )
 
 [node name="TreeSpawnLeft" type="Spatial" parent="."]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.3669, -11.9939, -17.1855 )
+transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.3669, -11.9939, -35.1646 )
 
 
