@@ -2,7 +2,7 @@ extends Node
 
 const WaveSegmentScene = preload("res://Wave/WaveSegment.tscn")
 
-var number_of_wave_segments = 10
+export var number_of_wave_segments = 20
 var wave_segment_array = Array()
 var height = 0
 var total_length = 0.0

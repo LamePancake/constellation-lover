@@ -12,7 +12,7 @@
 [ext_resource path="res://Constellation/Constellation.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Background/ground.msh" type="Mesh" id=11]
 
-[sub_resource type="FixedMaterial" id=2]
+[sub_resource type="FixedMaterial" id=1]
 
 flags/visible = true
 flags/double_sided = false
@@ -49,7 +49,7 @@ textures/glow_tc = 0
 textures/normal_tc = 0
 textures/shade_param_tc = 0
 
-[sub_resource type="FixedMaterial" id=3]
+[sub_resource type="FixedMaterial" id=2]
 
 flags/visible = true
 flags/double_sided = false
@@ -86,7 +86,7 @@ textures/glow_tc = 0
 textures/normal_tc = 0
 textures/shade_param_tc = 0
 
-[sub_resource type="FixedMaterial" id=4]
+[sub_resource type="FixedMaterial" id=3]
 
 flags/visible = true
 flags/double_sided = false
@@ -123,7 +123,7 @@ textures/glow_tc = 0
 textures/normal_tc = 0
 textures/shade_param_tc = 0
 
-[sub_resource type="FixedMaterial" id=1]
+[sub_resource type="FixedMaterial" id=4]
 
 flags/visible = true
 flags/double_sided = false
@@ -212,22 +212,28 @@ shadow/zoffset_scale = 2.0
 [node name="LeftWave" parent="." groups=[ "Waves" ] instance=ExtResource( 4 )]
 
 transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -1.06267, 0 )
+number_of_wave_segments = 20
+wave_vel = 8.0
 wave_start = 5.0
 lift_radius = 2.0
-wave_material = SubResource( 2 )
+wave_material = SubResource( 1 )
 
 [node name="CentreWave" parent="." groups=[ "Waves" ] instance=ExtResource( 4 )]
 
 transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.06267, 0 )
+number_of_wave_segments = 20
+wave_vel = 8.0
 lift_radius = 2.0
-wave_material = SubResource( 3 )
+wave_material = SubResource( 2 )
 
 [node name="RightWave" parent="." groups=[ "Waves" ] instance=ExtResource( 4 )]
 
 transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -1.06267, 0 )
+number_of_wave_segments = 10
+wave_vel = 8.0
 wave_start = 0.6
 lift_radius = 2.0
-wave_material = SubResource( 4 )
+wave_material = SubResource( 3 )
 
 [node name="FlightController" type="Node" parent="."]
 
@@ -289,7 +295,7 @@ geometry/use_baked_light = false
 geometry/baked_light_tex_id = 0
 mesh/mesh = ExtResource( 11 )
 mesh/skeleton = NodePath("..")
-material/0 = SubResource( 1 )
+material/0 = SubResource( 4 )
 
 
 [editable path="KiteTail"]
