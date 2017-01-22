@@ -23,6 +23,8 @@ v_offset = 0.0
 
 [node name="Kite" parent="." instance=ExtResource( 1 )]
 
+transform/local = Transform( 1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, -1.06267, -3.83708 )
+
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
