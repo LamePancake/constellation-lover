@@ -9,7 +9,7 @@ export var p_1_path = NodePath()
 export var p_2_path = NodePath()
 var p_1
 var p_2
-var resting_difference = 0.8
+var resting_difference = 0.25
 
 func _ready():
 	# Called every time the node is added to the scene.

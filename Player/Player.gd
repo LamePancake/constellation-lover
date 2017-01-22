@@ -1,8 +1,3 @@
-var tail_offset = Vector3(0, -2.5, 0);
-
-export var tail_node_path = NodePath()
-var tail_start
-
 var lateral_speed = 1.5
 var ascending_speed = 2
 var descending_speed = -1.5
@@ -31,7 +26,6 @@ var is_moving_right = false
 func _ready():
 	resting_height = get_translation().y
 	set_fixed_process(true)
-	tail_start = get_node(tail_node_path)
 
 func _fixed_process(delta):
 	var cur_pos = get_translation()
@@ -72,10 +66,6 @@ func _process_input():
 
 	if (Input.is_action_pressed("JUMP") && !is_ascending && !is_descending):
 		is_ascending = true
-
-	var tail_trans = tail_start.get_global_transform()
-	tail_trans.origin = get_transform().origin + tail_offset;
-	tail_start.set_global_transform(tail_trans)
 
 func _update_lateral_movement(delta, cur_pos, cur_rot):
 	if (is_moving_left):
