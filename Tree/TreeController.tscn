@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=1]
+
+[ext_resource path="res://Tree/TreeController.gd" type="Script" id=1]
+
+[node name="TreeController" type="Node"]
+
+script/script = ExtResource( 1 )
+movement = Vector3( 0, 0, 2 )
+spawn_interval = 3
+
+[node name="TreeSpawnRight" type="Spatial" parent="."]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.4839, -11.9939, -17.1855 )
+
+[node name="TreeSpawnLeft" type="Spatial" parent="."]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.3669, -11.9939, -17.1855 )
+
+
