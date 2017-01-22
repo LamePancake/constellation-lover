@@ -6,6 +6,7 @@ var front_height = 0;
 var back_height = 0;
 var speed = 5;
 var position = Vector3()
+var material = null
 
 func _ready():
 	set_process(true)
@@ -19,6 +20,7 @@ func _process(delta):
 	
 	self.clear()
 	self.begin(VS.PRIMITIVE_TRIANGLES, null)
+	self.set_material_override(material)
 	# Top side of triangle one
 	self.add_vertex(front_left)
 	self.add_vertex(front_right)
