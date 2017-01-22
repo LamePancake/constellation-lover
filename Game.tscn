@@ -1,50 +1,11 @@
-[gd_scene load_steps=10 format=1]
+[gd_scene load_steps=7 format=1]
 
 [ext_resource path="res://CameraFollow.gd" type="Script" id=1]
 [ext_resource path="res://Background/Background.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Player/TailRoot.gd" type="Script" id=4]
+[ext_resource path="res://Wave/Wave.tscn" type="PackedScene" id=3]
+[ext_resource path="res://FlightController.gd" type="Script" id=4]
 [ext_resource path="res://Player/Tail/Tail.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Player/tail.msh" type="Mesh" id=6]
-[ext_resource path="res://Wave/Wave.tscn" type="PackedScene" id=7]
-[ext_resource path="res://FlightController.gd" type="Script" id=8]
-
-[sub_resource type="FixedMaterial" id=1]
-
-flags/visible = true
-flags/double_sided = false
-flags/invert_faces = false
-flags/unshaded = false
-flags/on_top = false
-flags/lightmap_on_uv2 = true
-flags/colarray_is_srgb = true
-params/blend_mode = 0
-params/depth_draw = 1
-params/line_width = 7.86128e-43
-fixed_flags/use_alpha = false
-fixed_flags/use_color_array = false
-fixed_flags/use_point_size = false
-fixed_flags/discard_alpha = false
-fixed_flags/use_xy_normalmap = false
-params/diffuse = Color( 0.139709, 0.300989, 0.851563, 1 )
-params/specular = Color( 0, 0, 0, 1 )
-params/emission = Color( 0, 0, 0, 1 )
-params/specular_exp = 40
-params/detail_mix = 1.0
-params/normal_depth = 1
-params/shader = 0
-params/shader_param = 0.5
-params/glow = 0
-params/point_size = 1.0
-uv_xform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-textures/diffuse_tc = 0
-textures/detail_tc = 0
-textures/specular_tc = 0
-textures/emission_tc = 0
-textures/specular_exp_tc = 0
-textures/glow_tc = 0
-textures/normal_tc = 0
-textures/shade_param_tc = 0
+[ext_resource path="res://Player/Kite.tscn" type="PackedScene" id=6]
 
 [node name="Game" type="Spatial"]
 
@@ -53,9 +14,9 @@ _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 [node name="Camera" type="Camera" parent="."]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.734896 )
+transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.18228 )
 projection = 0
-fov = 120.0
+fov = 60.0
 near = 0.1
 far = 100.0
 keep_aspect = 1
@@ -65,7 +26,7 @@ environment = null
 h_offset = 0.0
 v_offset = 0.0
 script/script = ExtResource( 1 )
-jumping_fov = 90.0
+jumping_fov = 60.0
 lerp_speed = 8.0
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
@@ -93,73 +54,31 @@ shadow/zoffset_scale = 2.0
 
 [node name="Background" parent="." instance=ExtResource( 2 )]
 
-[node name="Kite" parent="." instance=ExtResource( 3 )]
+[node name="LeftWave" parent="." instance=ExtResource( 3 )]
 
-editor/display_folded = true
-transform/local = Transform( 0.6, 0, 0, 0, 0.424264, 0.424264, 0, -0.424264, 0.424264, 0, -1.06267, -1.73422 )
-horizontal_speed = 1.5
-horizontal_stabilization_speed = 1
-ascending_speed = 2
-descending_speed = -1.5
-horizontal_rot_speed = 0.5
-max_horizontal_angualar_velocity = 0.4
-min_horizontal_angular_velocity = 0.02
-max_vertical_angular_velocity = 3
-min_vertical_angular_velocity = 0
-jump_amount = 1.5
+transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -1.06267, 0 )
+wave_vel = 6.0
+wave_start = 5.0
 
-[node name="TailRoot" type="Spatial" parent="Kite"]
+[node name="CentreWave" parent="." instance=ExtResource( 3 )]
 
-_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000742957, -0.764887, 0.112289 )
+transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.06267, 0 )
+wave_vel = 6.0
+wave_start = 0.0
+
+[node name="RightWave" parent="." instance=ExtResource( 3 )]
+
+transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, -1.06267, 0 )
+wave_vel = 6.0
+wave_start = 0.6
+
+[node name="FlightController" type="Node" parent="."]
+
 script/script = ExtResource( 4 )
-tail_node_path = NodePath("../../KiteTail/Tail")
 
 [node name="KiteTail" parent="." instance=ExtResource( 5 )]
 
 editor/display_folded = true
-
-[node name="MeshInstance" type="MeshInstance" parent="KiteTail/Tail"]
-
-_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-transform/local = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0 )
-layers = 1
-geometry/visible = true
-geometry/material_override = null
-geometry/cast_shadow = 1
-geometry/receive_shadows = true
-geometry/range_begin = 0.0
-geometry/range_end = 0.0
-geometry/extra_cull_margin = 0.0
-geometry/billboard = false
-geometry/billboard_y = false
-geometry/depth_scale = false
-geometry/visible_in_all_rooms = false
-geometry/use_baked_light = false
-geometry/baked_light_tex_id = 0
-mesh/mesh = ExtResource( 6 )
-mesh/skeleton = NodePath("..")
-material/0 = SubResource( 1 )
-
-[node name="Tail1" parent="KiteTail"]
-
-accel_y = -0.5
-accel_z = 0.25
-
-[node name="Tail2" parent="KiteTail"]
-
-accel_y = -0.5
-accel_z = 0.25
-
-[node name="Tail3" parent="KiteTail"]
-
-accel_y = -0.5
-accel_z = 0.25
-
-[node name="Tail4" parent="KiteTail"]
-
-accel_y = -0.5
-accel_z = 0.25
 
 [node name="Link" parent="KiteTail" groups=[ "link" ]]
 
@@ -169,27 +88,18 @@ accel_z = 0.25
 
 [node name="Link4" parent="KiteTail" groups=[ "link" ]]
 
-[node name="LeftWave" parent="." instance=ExtResource( 7 )]
+[node name="Kite" parent="." instance=ExtResource( 6 )]
 
-transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -1.06267, 0 )
-wave_vel = 6.0
-wave_start = 5.0
+editor/display_folded = false
 
-[node name="CentreWave" parent="." instance=ExtResource( 7 )]
+[node name="KiteBodyMesh" parent="Kite"]
 
-transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.06267, 0 )
-wave_vel = 6.0
-wave_start = 0.0
+editor/display_folded = true
 
-[node name="RightWave" parent="." instance=ExtResource( 7 )]
+[node name="TailRoot" parent="Kite"]
 
-transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, -1.06267, 0 )
-wave_vel = 6.0
-wave_start = 0.6
-
-[node name="FlightController" type="Node" parent="."]
-
-script/script = ExtResource( 8 )
+transform/local = Transform( 1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 0.000742957, -1.63367, 0.150261 )
 
 
 [editable path="KiteTail"]
+[editable path="Kite"]
