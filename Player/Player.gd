@@ -1,22 +1,22 @@
-var horizontal_speed = 1.5
-var horizontal_stabilization_speed = 1
-var ascending_speed = 2
-var descending_speed = -1.5
+export var horizontal_speed = 1.5
+export var horizontal_stabilization_speed = 1
+export var ascending_speed = 2
+export var descending_speed = -1.5
 
-var horizontal_rot_speed = 0.5
+export var horizontal_rot_speed = 0.5
 var vertical_rot_speed = 0.9
 
-var max_horizontal_angualar_velocity = 0.4
-var min_horizontal_angular_velocity = 0.02
+export var max_horizontal_angualar_velocity = 0.4
+export var min_horizontal_angular_velocity = 0.02
 
-var max_vertical_angular_velocity = 3
-var min_vertical_angular_velocity = 0
+export var max_vertical_angular_velocity = 3
+export var min_vertical_angular_velocity = 0
 
 var cur_horizontal_velocity = 0
 var cur_horizontal_angular_velocity = 0
 var cur_vertical_angular_velocity = 0
 
-var jump_amount = 1.5
+export var jump_amount = 1.5
 var resting_height = 0
 var resting_rot = 0
 

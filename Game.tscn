@@ -89,6 +89,17 @@ shadow/zoffset_scale = 2.0
 
 [node name="Kite" parent="." instance=ExtResource( 2 )]
 
+horizontal_speed = 1.5
+horizontal_stabilization_speed = 1
+ascending_speed = 2
+descending_speed = -1.5
+horizontal_rot_speed = 0.5
+max_horizontal_angualar_velocity = 0.4
+min_horizontal_angular_velocity = 0.02
+max_vertical_angular_velocity = 3
+min_vertical_angular_velocity = 0
+jump_amount = 1.5
+
 [node name="TailRoot" type="Spatial" parent="Kite"]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
@@ -97,6 +108,8 @@ script/script = ExtResource( 3 )
 tail_node_path = NodePath("../../KiteTail/Tail")
 
 [node name="KiteTail" parent="." instance=ExtResource( 4 )]
+
+editor/display_folded = true
 
 [node name="MeshInstance" type="MeshInstance" parent="KiteTail/Tail"]
 
@@ -141,9 +154,6 @@ accel_y = -0.5
 accel_z = 0.25
 
 [node name="Link" parent="KiteTail" groups=[ "link" ]]
-
-p_1_path = NodePath("../Tail")
-p_2_path = NodePath("../Tail1")
 
 [node name="Link2" parent="KiteTail" groups=[ "link" ]]
 
