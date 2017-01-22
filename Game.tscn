@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=1]
+[gd_scene load_steps=11 format=1]
 
 [ext_resource path="res://GameStateController.gd" type="Script" id=1]
 [ext_resource path="res://CameraFollow.gd" type="Script" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Player/Kite.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Background/BackgroundMusic.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Tree/TreeController.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Constellation/Constellation.tscn" type="PackedScene" id=10]
 
 [node name="Game" type="Spatial"]
 
@@ -110,6 +111,10 @@ transform/local = Transform( 1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 0.00074295
 [node name="BackgroundMusic" parent="." instance=ExtResource( 8 )]
 
 [node name="TreeController" parent="." instance=ExtResource( 9 )]
+
+[node name="MeshInstance" parent="." instance=ExtResource( 10 )]
+
+transform/local = Transform( -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, 18.8307, -55.2282 )
 
 
 [editable path="KiteTail"]
