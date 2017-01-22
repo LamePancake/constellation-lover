@@ -7,7 +7,7 @@ var wave_segment_array = Array()
 var height = 0
 var total_length = 0.0
 
-export var wave_vel = 7.0
+export var wave_vel = 6.0
 export var wave_start = 0.0
 
 func get_height(z_pos):
@@ -46,7 +46,7 @@ func _ready():
 
 func _process(delta):
 	# Adjust the segments' heights
-	for i in range(number_of_wave_segments):
+	for i in range(wave_segment_array.size()):
 		set_segment_heights(wave_segment_array[i])
 	
 	wave_start += delta * wave_vel

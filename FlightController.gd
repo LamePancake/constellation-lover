@@ -5,7 +5,7 @@ var wave = null
 
 func _ready():
 	kite = get_node("/root/Game/Kite")
-	wave = get_node("/root/Game/Wave")
+	wave = get_node("/root/Game/CentreWave")
 	set_process(true)
 	
 func _process(delta):

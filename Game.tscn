@@ -52,11 +52,23 @@ shadow/zoffset_scale = 2.0
 
 [node name="Background" parent="." instance=ExtResource( 2 )]
 
-[node name="Wave" parent="." instance=ExtResource( 3 )]
+[node name="LeftWave" parent="." instance=ExtResource( 3 )]
+
+transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -1.06267, 0 )
+wave_vel = 6.0
+wave_start = 5.0
+
+[node name="CentreWave" parent="." instance=ExtResource( 3 )]
 
 transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.06267, 0 )
-wave_vel = 2.0
+wave_vel = 6.0
 wave_start = 0.0
+
+[node name="RightWave" parent="." instance=ExtResource( 3 )]
+
+transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, -1.06267, 0 )
+wave_vel = 6.0
+wave_start = 0.6
 
 [node name="FlightController" type="Node" parent="."]
 
