@@ -14,9 +14,9 @@ _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 [node name="Camera" type="Camera" parent="."]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.18228 )
+transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.297884, 0.565618 )
 projection = 0
-fov = 60.0
+fov = 120.0
 near = 0.1
 far = 100.0
 keep_aspect = 1
@@ -26,7 +26,7 @@ environment = null
 h_offset = 0.0
 v_offset = 0.0
 script/script = ExtResource( 1 )
-jumping_fov = 60.0
+jumping_fov = 80.0
 lerp_speed = 8.0
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
@@ -91,6 +91,7 @@ editor/display_folded = true
 [node name="Kite" parent="." instance=ExtResource( 6 )]
 
 editor/display_folded = false
+transform/local = Transform( 0.6, 0, 0, 0, 0.424264, 0.424264, 0, -0.424264, 0.424264, 0, -1.06267, -2.21726 )
 
 [node name="KiteBodyMesh" parent="Kite"]
 
