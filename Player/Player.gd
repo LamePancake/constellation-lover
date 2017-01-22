@@ -66,6 +66,7 @@ func _update_horizontal_movement(delta, cur_pos, cur_rot):
 		#move kite left
 		cur_horizontal_velocity += left * delta_velocity
 		move(Vector3(left * delta_velocity, 0, 0))
+		get_tree().call_group(0, "tail", "set_accel", Vector3(0, -0.37, -left * delta_velocity))
 		
 		#rotate kite left
 		if (cur_horizontal_angular_velocity > left * max_horizontal_angualar_velocity):
@@ -76,6 +77,7 @@ func _update_horizontal_movement(delta, cur_pos, cur_rot):
 		#move kite right
 		cur_horizontal_velocity += right * delta_velocity;
 		move(Vector3(right * delta_velocity, 0, 0))
+		get_tree().call_group(0, "tail", "set_accel", Vector3(0, -0.37, -right * delta_velocity))
 		
 		#rotate kite right
 		if (cur_horizontal_angular_velocity < right * max_horizontal_angualar_velocity):
