@@ -1,16 +1,17 @@
-[gd_scene load_steps=16 format=1]
+[gd_scene load_steps=17 format=1]
 
 [ext_resource path="res://GameStateController.gd" type="Script" id=1]
 [ext_resource path="res://CameraFollow.gd" type="Script" id=2]
 [ext_resource path="res://Background/Background.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Wave/Wave.tscn" type="PackedScene" id=4]
-[ext_resource path="res://FlightController.gd" type="Script" id=5]
-[ext_resource path="res://Player/Tail/Tail.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Player/Kite.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Background/BackgroundMusic.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Tree/TreeController.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Constellation/Constellation.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Background/ground.msh" type="Mesh" id=11]
+[ext_resource path="res://Wave/TransparentMat.tres" type="Material" id=5]
+[ext_resource path="res://FlightController.gd" type="Script" id=6]
+[ext_resource path="res://Player/Tail/Tail.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Player/Kite.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Background/BackgroundMusic.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Tree/TreeController.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Constellation/Constellation.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Background/ground.msh" type="Mesh" id=12]
 
 [sub_resource type="FixedMaterial" id=1]
 
@@ -209,41 +210,49 @@ shadow/zoffset_scale = 2.0
 
 [node name="Background" parent="." instance=ExtResource( 3 )]
 
-[node name="Background1" parent="." instance=ExtResource( 3 )]
-
 [node name="LeftWave" parent="." groups=[ "Waves" ] instance=ExtResource( 4 )]
 
 transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -1.06267, 0 )
 number_of_wave_segments = 20
+gap_frequency_range = Vector2( 2, 4 )
+gap_speed = 5.0
 wave_vel = 8.0
 wave_start = 5.0
 lift_radius = 2.0
 wave_material = SubResource( 1 )
+gap_material = ExtResource( 5 )
 
 [node name="CentreWave" parent="." groups=[ "Waves" ] instance=ExtResource( 4 )]
 
 transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.06267, 0 )
 number_of_wave_segments = 20
+gap_frequency_range = Vector2( 0, 4 )
+gap_size = 3
+gap_speed = 3.0
 wave_vel = 8.0
 lift_radius = 2.0
 wave_material = SubResource( 2 )
+gap_material = ExtResource( 5 )
 
 [node name="RightWave" parent="." groups=[ "Waves" ] instance=ExtResource( 4 )]
 
 transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -1.06267, 0 )
 number_of_wave_segments = 10
+gap_frequency_range = Vector2( 5, 6 )
+gap_speed = 8.0
 wave_vel = 8.0
 wave_start = 0.6
 lift_radius = 2.0
 wave_material = SubResource( 3 )
+gap_material = ExtResource( 5 )
 
 [node name="FlightController" type="Node" parent="."]
 
-script/script = ExtResource( 5 )
+script/script = ExtResource( 6 )
 start_wave = NodePath("../CentreWave")
 drop_speed = 4.0
 
-[node name="KiteTail" parent="." instance=ExtResource( 6 )]
+[node name="KiteTail" parent="." instance=ExtResource( 7 )]
 
 editor/display_folded = true
 
@@ -255,7 +264,7 @@ editor/display_folded = true
 
 [node name="Link4" parent="KiteTail" groups=[ "link" ]]
 
-[node name="Kite" parent="." instance=ExtResource( 7 )]
+[node name="Kite" parent="." instance=ExtResource( 8 )]
 
 transform/local = Transform( 0.6, 0, 0, 0, 0.424264, 0.424264, 0, -0.424264, 0.424264, 0, -1.06267, -2.21726 )
 horizontal_speed = 3.0
@@ -269,11 +278,11 @@ editor/display_folded = true
 
 transform/local = Transform( 1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 0.000742957, -1.63367, 0.150261 )
 
-[node name="BackgroundMusic" parent="." instance=ExtResource( 8 )]
+[node name="BackgroundMusic" parent="." instance=ExtResource( 9 )]
 
-[node name="TreeController" parent="." instance=ExtResource( 9 )]
+[node name="TreeController" parent="." instance=ExtResource( 10 )]
 
-[node name="Constellation" parent="." instance=ExtResource( 10 )]
+[node name="Constellation" parent="." instance=ExtResource( 11 )]
 
 transform/local = Transform( -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, 18.8307, -55.2282 )
 
@@ -295,7 +304,7 @@ geometry/depth_scale = false
 geometry/visible_in_all_rooms = false
 geometry/use_baked_light = false
 geometry/baked_light_tex_id = 0
-mesh/mesh = ExtResource( 11 )
+mesh/mesh = ExtResource( 12 )
 mesh/skeleton = NodePath("..")
 material/0 = SubResource( 4 )
 

@@ -10,7 +10,7 @@ var total_length = 0.0
 # Gap settings and current state
 export(Vector2) var gap_frequency_range = Vector2(1.0, 3.0)
 export var gap_size = 2
-export var gap_speed = 2.0
+export var gap_speed = 5.0
 
 const GAP_POS_INDEX = 0
 const GAP_SIZE_INDEX = 1
@@ -23,6 +23,7 @@ export var wave_start = 0.0
 export var lift_radius = 0.5
 export var lift_speed = 3.0
 export(Material) var wave_material = null
+export(Material) var gap_material = null
 
 func get_height(z_pos):
 	# Maps this wave in the range 0->PI/2
@@ -52,6 +53,9 @@ func create_gap():
 func update_gaps(delta):
 	var gaps_to_remove = Array()
 	
+	for segment in wave_segment_array:
+		segment.material = wave_material
+	
 	# Move the gaps along the wave, making any segments they contain invisible
 	for gap in gaps:
 		gap[GAP_POS_INDEX] += gap_speed * delta
@@ -59,9 +63,8 @@ func update_gaps(delta):
 		if (segments.size() == 0):
 			gaps_to_remove.push_back(gap)
 		else:
-			#for segment in segments:
-			#	segment.set_visible(false)
-			pass
+			for segment in segments:
+				segment.material = gap_material
 
 	# Remove any gaps that have gone offscreen
 	for gap in gaps_to_remove:

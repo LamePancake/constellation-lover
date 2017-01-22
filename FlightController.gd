@@ -53,8 +53,8 @@ func _process(delta):
 					kite_pos.y += delta * wave.lift_speed
 				else:
 					should_drop = true
-		else:
-			kite_pos.y = height
+			else:
+				kite_pos.y = height
 	else:
 		should_drop = true
 
