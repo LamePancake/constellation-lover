@@ -14,6 +14,6 @@ func _fixed_process(delta):
 	if (Input.is_action_pressed("MOVE_RIGHT")):
 		move(Vector3(speed * delta, 0, 0))
 	
-	var tail_trans = tail_start.get_transform()
+	var tail_trans = tail_start.get_global_transform()
 	tail_trans.origin = get_transform().origin + tail_offset;
-	tail_start.set_transform(tail_trans)
+	tail_start.set_global_transform(tail_trans)
