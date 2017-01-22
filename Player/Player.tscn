@@ -63,6 +63,16 @@ collide_with/rigid = true
 collide_with/character = true
 collision/margin = 0.001
 script/script = ExtResource( 1 )
+horizontal_speed = 1.5
+horizontal_stabilization_speed = 1
+ascending_speed = 2
+descending_speed = -1.5
+horizontal_rot_speed = 0.5
+max_horizontal_angualar_velocity = 0.4
+min_horizontal_angular_velocity = 0.02
+max_vertical_angular_velocity = 3
+min_vertical_angular_velocity = 0
+jump_amount = 1.5
 
 [node name="KiteMesh" type="MeshInstance" parent="."]
 
