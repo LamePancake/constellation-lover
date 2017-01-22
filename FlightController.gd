@@ -43,7 +43,7 @@ func _process(delta):
 			if (diff < wave.lift_radius):
 				kite_pos.y += delta * wave.lift_speed
 			else:
-				# Death!
+				kite_pos.y -= delta * drop_speed
 				pass
 		else:
 			kite_pos.y = height
