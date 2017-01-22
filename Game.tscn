@@ -58,10 +58,12 @@ shadow/zoffset_scale = 2.0
 
 transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -1.06267, 0 )
 wave_start = 5.0
+lift_radius = 2.0
 
 [node name="CentreWave" parent="." groups=[ "Waves" ] instance=ExtResource( 3 )]
 
 transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.06267, 0 )
+lift_radius = 2.0
 
 [node name="RightWave" parent="." groups=[ "Waves" ] instance=ExtResource( 3 )]
 
