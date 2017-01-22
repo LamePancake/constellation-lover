@@ -56,6 +56,8 @@ shadow/zoffset_scale = 2.0
 
 [node name="Background" parent="." instance=ExtResource( 3 )]
 
+[node name="Background1" parent="." instance=ExtResource( 3 )]
+
 [node name="LeftWave" parent="." groups=[ "Waves" ] instance=ExtResource( 4 )]
 
 transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -1.06267, 0 )
