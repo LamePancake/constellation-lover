@@ -11,6 +11,11 @@ export var accel_x = 0.0
 export var accel_y = 0.0
 export var accel_z = 0.0
 
+func set_accel(accel):
+	accel_x = accel.x
+	accel_y = accel.y
+	accel_z = accel.z
+
 func _ready():
 	# Called every time the node is added to the scene.
 	# Initialization here

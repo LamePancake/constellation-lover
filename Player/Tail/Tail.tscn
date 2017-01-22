@@ -225,7 +225,7 @@ mesh/mesh = ExtResource( 2 )
 mesh/skeleton = NodePath("..")
 material/0 = SubResource( 1 )
 
-[node name="Tail1" type="Spatial" parent="."]
+[node name="Tail1" type="Spatial" parent="." groups=[ "tail" ]]
 
 editor/display_folded = true
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
@@ -257,7 +257,7 @@ mesh/mesh = ExtResource( 2 )
 mesh/skeleton = NodePath("..")
 material/0 = SubResource( 2 )
 
-[node name="Tail2" type="Spatial" parent="."]
+[node name="Tail2" type="Spatial" parent="." groups=[ "tail" ]]
 
 editor/display_folded = true
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
@@ -289,7 +289,7 @@ mesh/mesh = ExtResource( 2 )
 mesh/skeleton = NodePath("..")
 material/0 = SubResource( 3 )
 
-[node name="Tail3" type="Spatial" parent="."]
+[node name="Tail3" type="Spatial" parent="." groups=[ "tail" ]]
 
 editor/display_folded = true
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
@@ -321,7 +321,7 @@ mesh/mesh = ExtResource( 2 )
 mesh/skeleton = NodePath("..")
 material/0 = SubResource( 4 )
 
-[node name="Tail4" type="Spatial" parent="."]
+[node name="Tail4" type="Spatial" parent="." groups=[ "tail" ]]
 
 editor/display_folded = true
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
